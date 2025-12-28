@@ -55,8 +55,8 @@ def get_players(team_id):
         
         roster = commonteamroster.CommonTeamRoster(
             team_id=team_id,
-            season='2025-26'
-            timeout=60
+            season='2025-26',
+            timeout=120
         )
         
         players_data = roster.get_data_frames()[0]
@@ -97,8 +97,8 @@ def get_stats(player_id):
         
         gamelog = playergamelog.PlayerGameLog(
             player_id=player_id,
-            season='2025-26'
-            timeout=60
+            season='2025-26',
+            timeout=120
         )
         
         games_data = gamelog.get_data_frames()[0]
@@ -168,4 +168,5 @@ if __name__ == '__main__':
     port = int(os.environ.get('PORT', 3001))
     print(f'🚀 Serveur sur port {port}')
     app.run(host='0.0.0.0', port=port, debug=False)
+
 
