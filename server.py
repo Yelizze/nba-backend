@@ -6,6 +6,7 @@ from flask_cors import CORS
 from nba_api.stats.static import teams
 from nba_api.stats.endpoints import commonteamroster, playergamelog
 import time
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -161,9 +162,7 @@ def get_stats(player_id):
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    print('🚀 Démarrage du serveur Python PropStats...')
-    print('🏀 Utilise l\'API officielle NBA.com (gratuit)')
-    print('✅ Stats saison 2025-26 en temps réel')
-    print('🌐 Serveur sur http://localhost:3001')
-    print('-' * 50)
-    app.run(host='0.0.0.0', port=3001, debug=True)
+    import os
+    port = int(os.environ.get('PORT', 3001))
+    print(f'🚀 Serveur sur port {port}')
+    app.run(host='0.0.0.0', port=port, debug=False)
